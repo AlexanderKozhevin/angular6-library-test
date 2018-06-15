@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "randomer": {
+      "root": "projects/randomer",
+      "sourceRoot": "projects/randomer/src",
+      "projectType": "library",
+      "prefix": "enl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/randomer/tsconfig.lib.json",
+            "project": "projects/randomer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/randomer/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/randomer/src/test.ts",
+            "tsConfig": "projects/randomer/tsconfig.spec.json",
+            "karmaConfig": "projects/randomer/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/randomer/tsconfig.lib.json",
+              "projects/randomer/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "example-ng6-lib-app"
